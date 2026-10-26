@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+:root {
+  /* Font */
+  --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", var(--font-inter), Inter, Arial, sans-serif;
+
+  /* Light Mode Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f7;
+  --bg-elevated: #ffffff;
+  --bg-tertiary: #e5e5ea;
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #86868b;
+  --border-subtle: #d2d2d7;
+  --border-hairline: rgba(0, 0, 0, 0.08);
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --link: #0066cc;
+  --fill-input: #f5f5f7;
+
+  /* Card Shadows */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.04);
+  --shadow-elevated: 0 12px 36px rgba(0, 0, 0, 0.08);
+  --shadow-modal: 0 24px 60px rgba(0, 0, 0, 0.16);
+
+  /* Restrained Desaturated Category Palette (Light) */
+  --cat-blue-bg: rgba(0, 113, 227, 0.08);
+  --cat-blue-text: #0071e3;
+  --cat-green-bg: rgba(52, 199, 89, 0.12);
+  --cat-green-text: #248a3d;
+  --cat-orange-bg: rgba(255, 149, 0, 0.12);
+  --cat-orange-text: #c96500;
+  --cat-purple-bg: rgba(175, 82, 222, 0.12);
+  --cat-purple-text: #893cb5;
+  --cat-pink-bg: rgba(255, 45, 85, 0.12);
+  --cat-pink-text: #c2183b;
+  --cat-teal-bg: rgba(90, 200, 250, 0.14);
+  --cat-teal-text: #007a99;
+}
+
+.dark {
+  /* Dark Mode Colors */
+  --bg-primary: #000000;
+  --bg-secondary: #161617;
+  --bg-elevated: #1d1d1f;
+  --bg-tertiary: #2c2c2e;
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --text-tertiary: #6e6e73;
+  --border-subtle: #424245;
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --accent: #2997ff;
+  --accent-hover: #3ba2ff;
+  --link: #2997ff;
+  --fill-input: #2c2c2e;
+
+  /* Card Shadows (Dark) */
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --shadow-modal: 0 32px 80px rgba(0, 0, 0, 0.8);
+
+  /* Restrained Desaturated Category Palette (Dark) */
+  --cat-blue-bg: rgba(41, 151, 255, 0.15);
+  --cat-blue-text: #2997ff;
+  --cat-green-bg: rgba(48, 209, 88, 0.15);
+  --cat-green-text: #30d158;
+  --cat-orange-bg: rgba(255, 159, 10, 0.15);
+  --cat-orange-text: #ff9f0a;
+  --cat-purple-bg: rgba(191, 90, 242, 0.15);
+  --cat-purple-text: #bf5af2;
+  --cat-pink-bg: rgba(255, 55, 95, 0.15);
+  --cat-pink-text: #ff375f;
+  --cat-teal-bg: rgba(100, 210, 255, 0.15);
+  --cat-teal-text: #64d2ff;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-apple);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Translucent frosted glass effect */
+.apple-glass {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.dark .apple-glass {
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+/* Apple Card styles */
+.apple-card {
+  background-color: var(--bg-elevated);
+  border-radius: 22px;
+  border: 1px solid var(--border-hairline);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s ease;
+}
+
+.apple-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* Motion: Fade & rise keyframe */
+@keyframes appleFadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-rise {
+  animation: appleFadeRise 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-rise {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 9999px;
+}
+
+/* Desaturated Soft Pastels from DESIGN.md Table 3 */
+.pastel-blue {
+  background-color: var(--cat-blue-bg);
+  color: var(--cat-blue-text);
+  border: 1px solid rgba(0, 113, 227, 0.2);
+}
+.pastel-green {
+  background-color: var(--cat-green-bg);
+  color: var(--cat-green-text);
+  border: 1px solid rgba(52, 199, 89, 0.2);
+}
+.pastel-orange {
+  background-color: var(--cat-orange-bg);
+  color: var(--cat-orange-text);
+  border: 1px solid rgba(255, 149, 0, 0.2);
+}
+.pastel-purple {
+  background-color: var(--cat-purple-bg);
+  color: var(--cat-purple-text);
+  border: 1px solid rgba(175, 82, 222, 0.2);
+}
+.pastel-pink {
+  background-color: var(--cat-pink-bg);
+  color: var(--cat-pink-text);
+  border: 1px solid rgba(255, 45, 85, 0.2);
+}
+.pastel-teal {
+  background-color: var(--cat-teal-bg);
+  color: var(--cat-teal-text);
+  border: 1px solid rgba(90, 200, 250, 0.2);
+}
+.pastel-gray {
+  background-color: rgba(110, 110, 115, 0.08);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-hairline);
+}
+
